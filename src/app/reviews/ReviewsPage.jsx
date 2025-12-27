@@ -2,7 +2,11 @@
 import ReviewCard from "@/components/ReviewCard/ReviewCard";
 import React, { useEffect, useState } from "react";
 import ReviewLoading from "./ReviewLoading";
-
+import { Anek_Bangla } from "next/font/google";
+const anek = Anek_Bangla({
+  weight: ["400", "700"],
+  subsets: ["latin"],
+});
 const ReviewsPage = () => {
   const [reviews, setReviews] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -18,7 +22,7 @@ const ReviewsPage = () => {
     return <ReviewLoading></ReviewLoading>;
   }
   return (
-    <div>
+    <div className={`${anek.className} max-w-7xl mx-auto py-10`}>
       <h2 className="text-2xl font-semibold">
         Total {reviews.length} Reviews Found
       </h2>
