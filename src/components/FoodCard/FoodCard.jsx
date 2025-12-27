@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 
 /* ---------------- Main Card ---------------- */
@@ -29,9 +30,12 @@ const FoodCard = ({ food }) => {
             Add to Cart
           </button>
 
-          <button className="flex-1 border border-orange-500 text-orange-500 hover:bg-orange-50 py-2 rounded-lg transition">
+          <Link
+            href={`/foods/${food.id}`}
+            className="flex-1 border text-center border-orange-500 text-orange-500 hover:bg-orange-50 py-2 rounded-lg transition"
+          >
             View Details
-          </button>
+          </Link>
         </div>
       </div>
     </div>
