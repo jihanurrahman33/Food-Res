@@ -1,0 +1,9 @@
+.bgred{
+    background-color: rgb(236, 161, 161);
+}
+.bgPadding{
+    padding: 10px;
+}
+.bgRounded{
+    border-radius: 10px;
+}
