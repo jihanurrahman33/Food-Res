@@ -12,7 +12,9 @@ const FoodsPage = async () => {
   const foods = await getFoods();
   return (
     <div>
-      <h2>Total {foods.length} Foods Found.</h2>
+      <h2 className="text-2xl font-semibold mt-2">
+        Total {foods.length} Foods Found
+      </h2>
       <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-4">
         {foods.map((food) => (
           <FoodCard key={food.id} food={food} />
