@@ -15,7 +15,10 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "Food Res",
+  title: {
+    default: "Food Res",
+    template: "%s | Food Res",
+  },
   description: "Food Resturant Reviews",
 };
 

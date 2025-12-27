@@ -10,6 +10,10 @@ const getFoods = async (search) => {
   const data = await res.json();
   return data.foods || [];
 };
+export const metadata = {
+  title: "All Foods",
+  description: "all Food Items Listed Here",
+};
 const FoodsPage = async ({ searchParams }) => {
   const { search = "" } = await searchParams;
 

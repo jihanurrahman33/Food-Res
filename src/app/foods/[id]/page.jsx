@@ -4,7 +4,7 @@ import React from "react";
 const getFoodById = async (id) => {
   const res = await fetch(
     `https://taxi-kitchen-api.vercel.app/api/v1/foods/${id}`,
-    { cache: "no-store" } // always fresh data
+    { cache: "no-store" }
   );
 
   if (!res.ok) return null;
@@ -12,7 +12,18 @@ const getFoodById = async (id) => {
   const data = await res.json();
   return data.details || null;
 };
-
+export async function generateMetadata({ params }) {
+  const { id } = await params;
+  const res = await fetch(
+    `https://taxi-kitchen-api.vercel.app/api/v1/foods/${id}`,
+    { cache: "no-store" }
+  );
+  const { details = {} } = await res.json();
+  return {
+    title: details.title,
+    description: `Details and reviews for ${details.title}`,
+  };
+}
 /* ---------------- PAGE ---------------- */
 const FoodDetails = async ({ params }) => {
   const { id } = await params;
@@ -34,7 +45,7 @@ const FoodDetails = async ({ params }) => {
 
         {/* Info */}
         <div>
-          <h1 className="text-3xl font-bold text-gray-800 mb-2">
+          <h1 className="text-3xl font-bold text-white-800 mb-2">
             {food.title}
           </h1>
 
