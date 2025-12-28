@@ -1,16 +1,14 @@
-import stat from "daisyui/components/stat";
 import { NextResponse } from "next/server";
 
-// This function can be marked `async` if using `await` inside
 export function proxy(request) {
   const { pathname } = request.nextUrl;
-  if (!pathname.startsWith("/api/feedback")) {
-    return NextResponse.json({
-      status: 404,
-      message: "Not Found",
-    });
+
+  // Allow API routes to continue normally
+  if (pathname.startsWith("/api/")) {
+    return NextResponse.next();
   }
-  return NextResponse.redirect(new URL("/", request.url));
+
+  return NextResponse.next();
 }
 
 export const config = {

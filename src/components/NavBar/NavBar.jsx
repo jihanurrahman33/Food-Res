@@ -6,7 +6,7 @@ const NavBar = () => {
     { name: "Home", path: "/" },
     { name: "Foods", path: "/foods" },
     { name: "Reviews", path: "/reviews" },
-    { name: "Feedbacks", path: "/feedbacks" },
+    { name: "Feedback", path: "/feedback" },
   ];
   return (
     <div>

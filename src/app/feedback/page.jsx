@@ -6,21 +6,20 @@ export const metadata = {
   description: "User feedbacks for Food Res",
 };
 const getFeedbacks = async () => {
-  const res = await fetch(`http://localhost:3000/api/feedback/`, {
-    cache: "force-cache",
+  const res = await fetch(`${process.env.NEXT_PUBLIC_server}/api/feedback/`, {
     next: { revalidate: 60 },
   });
-  const data = await res.json();
-  return data;
+
+  return await res.json();
 };
-const FeedbacksPage = async () => {
+const FeedbackPage = async () => {
   const feedbacks = await getFeedbacks();
   return (
     <div>
       <h2 className="text-2xl font-bold">{feedbacks.length} Feedbacks Found</h2>
       <div className="my-5">
         {" "}
-        <Link href={"/feedbacks/add"} className="btn">
+        <Link href={"/feedback/add"} className="btn">
           Add Feedback
         </Link>
       </div>
@@ -33,4 +32,4 @@ const FeedbacksPage = async () => {
   );
 };
 
-export default FeedbacksPage;
+export default FeedbackPage;
