@@ -1,3 +1,4 @@
+import { redirect } from "next/navigation";
 import React from "react";
 
 /* ---------------- API CALL ---------------- */
@@ -29,8 +30,9 @@ const FoodDetails = async ({ params }) => {
   const { id } = await params;
   const food = await getFoodById(id);
 
-  if (!food) {
-    return <h1 className="text-center text-2xl mt-10">Food Not Found</h1>;
+  if (!food.title) {
+    redirect("/foods");
+    //return <h1 className="text-center text-2xl mt-10">Food Not Found</h1>;
   }
 
   return (

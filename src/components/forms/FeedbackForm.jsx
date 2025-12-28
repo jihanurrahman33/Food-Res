@@ -1,7 +1,9 @@
 "use client";
+import { useRouter } from "next/navigation";
 import React from "react";
 
 const FeedbackForm = () => {
+  const router = useRouter();
   const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = {
@@ -18,6 +20,7 @@ const FeedbackForm = () => {
     if (data.insertedId) {
       alert("Feedback added successfully!");
       e.target.reset();
+      router.push("/feedbacks");
     } else {
       alert("Failed to add feedback.");
     }
