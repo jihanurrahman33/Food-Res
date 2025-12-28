@@ -2,25 +2,27 @@
 import { useRouter } from "next/navigation";
 import React from "react";
 
-const FeedbackForm = () => {
+const FeedbackForm = ({ postFeedback }) => {
   const router = useRouter();
   const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = {
       message: e.target.message.value,
     };
-    const res = await fetch(`${process.env.NEXT_PUBLIC_server}/api/feedback/`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(formData),
-    });
-    const data = await res.json();
+    // const res = await fetch(`${process.env.NEXT_PUBLIC_server}/api/feedback/`, {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: JSON.stringify(formData),
+    // });
+    // const data = await res.json();
+
+    const data = await postFeedback(formData.message);
     if (data.insertedId) {
       alert("Feedback added successfully!");
       e.target.reset();
-      router.push("/feedbacks");
+      router.push("/feedback");
     } else {
       alert("Failed to add feedback.");
     }

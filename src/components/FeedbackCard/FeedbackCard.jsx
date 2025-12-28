@@ -1,8 +1,7 @@
-"use client";
 import React from "react";
 import { formatDistanceToNow } from "date-fns";
 
-const FeedbackCard = ({ feedback, onUpdate, onDelete }) => {
+const FeedbackCard = ({ feedback }) => {
   const { _id, message, date } = feedback;
 
   return (
@@ -17,17 +16,11 @@ const FeedbackCard = ({ feedback, onUpdate, onDelete }) => {
 
       {/* Buttons */}
       <div className="flex gap-3 mt-auto">
-        <button
-          onClick={() => onUpdate(_id)}
-          className="flex-1 py-2 rounded-lg border border-blue-500 text-blue-500 hover:bg-blue-50 transition"
-        >
+        <button className="flex-1 py-2 rounded-lg border border-blue-500 text-blue-500 hover:bg-blue-50 transition">
           Update
         </button>
 
-        <button
-          onClick={() => onDelete(_id)}
-          className="flex-1 py-2 rounded-lg border border-red-500 text-red-500 hover:bg-red-50 transition"
-        >
+        <button className="flex-1 py-2 rounded-lg border border-red-500 text-red-500 hover:bg-red-50 transition">
           Delete
         </button>
       </div>
